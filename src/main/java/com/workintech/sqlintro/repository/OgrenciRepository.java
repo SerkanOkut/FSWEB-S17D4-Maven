@@ -19,7 +19,7 @@ public interface OgrenciRepository extends JpaRepository<Ogrenci, Long> {
     List<Ogrenci> findGirls();
 
     //Öğrenci tablosunda kaydı bulunan sınıfların adını her sınıf bir kez görüntülenecek şekilde listeleyiniz
-    String QUESTION_3 = "SELECT DISTINCT FROM ogrenci ";
+    String QUESTION_3 = "SELECT DISTINCT sinif FROM ogrenci ";
     @Query(value = QUESTION_3, nativeQuery = true)
     List<String> findAllClasses();
 
@@ -29,12 +29,12 @@ public interface OgrenciRepository extends JpaRepository<Ogrenci, Long> {
     List<Ogrenci> find10AGirls();
 
     //Öğrenci numarası 5 ile 10 arasında olan Kız öğrencileri listeleyiniz.
-    String QUESTION_5 = "SELECT * FROM ogrenci WHERE ogrno BETWEEN 5 AND 10 AND cinsiyet = 'K';";
+    String QUESTION_5 = "SELECT * FROM ogrenci WHERE( ogrno >=5 AND  ogrno<=10) AND cinsiyet = 'K';";
     @Query(value = QUESTION_5, nativeQuery = true)
     List<Ogrenci> findGirlsWithOgrno();
 
     // Öğrencileri adına göre sıralayınız (alfabetik)
-    String QUESTION_6 = "SELECT * FROM ogrenci ORDER BY ograd ASC;";
+    String QUESTION_6 = "SELECT * FROM ogrenci ORDER BY ad ASC;";
     @Query(value = QUESTION_6, nativeQuery = true)
     List<Ogrenci> findStudentsAlphabetically();
 
@@ -54,7 +54,7 @@ public interface OgrenciRepository extends JpaRepository<Ogrenci, Long> {
     Ogrenci findElderStudent();
 
     //İkinci harfi E olan ogrencileri listeleyiniz.
-    String QUESTION_10 = "SELECT * FROM ogrenci WHERE ograd LIKE  '_e%';";
+    String QUESTION_10 = "SELECT * FROM ogrenci WHERE ad ILIKE  '_E%';";
     @Query(value = QUESTION_10, nativeQuery = true)
     List<Ogrenci> findStudentsSecondLetterOfN();
 

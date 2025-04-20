@@ -5,20 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 @Entity
 @Table(name = "ogrenci")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ogrenci {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ogrno")
     private Long ogrno;
+
     private String ad;
     private String soyad;
     private String cinsiyet;
     private String sinif;
     private int puan;
+
     @Column(nullable = true)
     private String dtarih;
 }
+
